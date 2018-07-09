@@ -1,30 +1,31 @@
 package demo.test.junit;
 
-import java.util.logging.Logger;
-
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
-import demoJunit5.Persona;
+import demo.utility.Util;
 
-//@ExtendWith(SpringExtension.class)
-//@ContextConfiguration("/aplicationContext.xml")
-class TestJUni5 {
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration("/aplicationContext.xml")
+class TestJUni5 {	
 
-	private String name = "TOSHIRO";
-	private final static Logger log = Logger.getLogger("TestJUni5");
-
+	private Util util;
 	@Test
-	void test() {
-		System.out.println("INICIO BIEN ");
-		log.info("PRUEBA DE LOG ");
-
+	void testJWT() {
+		System.out.println("INICIO DE PRUEBA ");
+		util = new Util();
+		
+		String temporal = "";
+		temporal = util.createToken("", "", "", null);
+		
+		System.out.println(temporal);	
+		
 	}
 
-	@Test
-	void testJSON() {
-		Persona p = new Persona("ALEJANDRO", 10);		
-		log.info("Salida de JSON");
-		//log.info(temporal);
 
-	}
 }
